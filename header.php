@@ -32,16 +32,12 @@
 	<div class="off-canvas-wrap" data-offcanvas>
 	<div class="inner-wrap">
 	<?php endif; ?>
-
 	<?php do_action( 'foundationpress_layout_start' ); ?>
-
 	<?php
-
 		if ( ! get_theme_mod( 'wpt_mobile_menu_layout' ) || get_theme_mod( 'wpt_mobile_menu_layout' ) == 'offcanvas' ) :
 		get_template_part( 'parts/off-canvas-menu' );
 		endif;
 	?>
-
 	<?php get_template_part( 'parts/top-bar' ); ?>
 
 <section class="container" role="document">

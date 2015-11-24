@@ -16,32 +16,74 @@
 
 get_header(); ?>
 
+<!-- Here is the Index / Bio part -->
+
 <div class="row">
-	<?php get_template_part( 'parts/check-if-sidebar-exist' ); ?>
 
-	<?php if ( have_posts() ) : ?>
+	<div class="large-6 columns">
+		
+		<!-- Index of pieces -->
+		
+		<?php
+query_posts(array('showposts' => 30, 'post_parent' => 20, 'post_type' => 'page'));
 
-		<?php do_action( 'foundationpress_before_content' ); ?>
+while (have_posts()) { the_post();
+?>
+<ul>
+	<li><a href="#<?php echo the_id();?>"><?php echo the_title() ;?>  </li>
+</ul>				  
+<?php }
 
-		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'content', get_post_format() ); ?>
-		<?php endwhile; ?>
+wp_reset_query();  // Restore global post data
 
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
+?>
 
-		<?php do_action( 'foundationpress_before_pagination' ); ?>
+		
+	</div>
 
-	<?php endif;?>
+		
+	<div class="large-6 columns">
+
+<!-- BIO -->
+	
+		<?php
+		query_posts(array('showposts' => 1, 'post_title' => "Bio", 'post_type' => 'page'));
+		while (have_posts()) { the_post();
+					  
+		echo the_content();
+					 }
+	?>
+	</div>
+</div>
+
+<!-- Loop thru the pages that are parent of page ID 20 (My Pieces holder) -->
+
+
+<?php
+query_posts(array('showposts' => 30, 'post_parent' => 20, 'post_type' => 'page'));
+
+while (have_posts()) { the_post();
+?>
+<div id="<?php echo the_id();?>">
+
+
+	<div class "piece_title"><?php echo the_title();?></div>
+	
+	<div class "piece_content"><?php echo the_content();?>  </div> 
 
 
 
-	<?php if ( function_exists( 'foundationpress_pagination' ) ) { foundationpress_pagination(); } else if ( is_paged() ) { ?>
-		<nav id="post-nav">
-			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationpress' ) ); ?></div>
-			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationpress' ) ); ?></div>
-		</nav>
-	<?php } ?>
+
+</div>
+
+
+<?php
+}
+
+wp_reset_query();  // Restore global post data
+
+
+?>
 
 	<?php do_action( 'foundationpress_after_content' ); ?>
 

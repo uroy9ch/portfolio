@@ -22,3 +22,5 @@
         </section>
     </nav>
 </div>
+            	<img  class="featured" src="wp-content/themes/portfolio/assets/images/portfolioHomepg.svg">
+
