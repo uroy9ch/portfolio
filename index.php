@@ -88,6 +88,6 @@ wp_reset_query();  // Restore global post data
 	<?php do_action( 'foundationpress_after_content' ); ?>
 
 	</div>
-	<?php get_sidebar(); ?>
+	<?php /*get_sidebar();*/ ?>
 </div>
 <?php get_footer(); ?>

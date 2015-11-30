@@ -13,10 +13,11 @@
 
 get_header(); ?>
 
+<div class="full-width">
 <?php get_template_part( 'parts/featured-image' ); ?>
-
+</div>
 <div class="row">
-	<?php get_template_part( 'parts/check-if-sidebar-exist' ); ?>
+	<?php /*get_template_part( 'parts/check-if-sidebar-exist' );*/ ?>
 	<?php do_action( 'foundationpress_before_content' ); ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
@@ -41,6 +42,6 @@ get_header(); ?>
 	<?php do_action( 'foundationpress_after_content' ); ?>
 
 	</div>
-	<?php get_sidebar(); ?>
+	<?php /*get_sidebar();*/ ?>
 </div>
 <?php get_footer(); ?>
