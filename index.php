@@ -30,7 +30,7 @@ query_posts(array('showposts' => 30, 'post_parent' => 20, 'post_type' => 'page')
 while (have_posts()) { the_post();
 ?>
 <ul>
-	<li><a href="#<?php echo the_id();?>"><?php echo the_title() ;?>  </li>
+	<li><a href="#<?php echo the_id();?>"><?php echo the_title() ;?>  </li></a>
 </ul>				  
 <?php }
 
